@@ -1,0 +1,390 @@
+// https://api.checks.truora.com/v1/checks/CHKe9589d8706edf3cd0e2195b745d512f2
+{
+    "check": {
+        "check_id": "CHKe9589d8706edf3cd0e2195b745d512f2",
+        "company_summary": {
+            "company_status": "not_found",
+            "result": "skipped"
+        },
+        "country": "PE",
+        "creation_date": "2023-05-22T22:43:21.299204644Z",
+        "name_score": 1,
+        "id_score": 1,
+        "score": 1,
+        "scores": [
+            {
+                "data_set": "personal_identity",
+                "severity": "none",
+                "score": 1,
+                "result": "found",
+                "by_id": {
+                    "result": "found",
+                    "score": 1,
+                    "severity": "none"
+                },
+                "by_name": {
+                    "result": "ignored",
+                    "score": 1,
+                    "severity": "unknown"
+                }
+            },
+            {
+                "data_set": "criminal_record",
+                "severity": "none",
+                "score": 1,
+                "result": "not_found",
+                "by_id": {
+                    "result": "not_found",
+                    "score": 1,
+                    "severity": "none"
+                },
+                "by_name": {
+                    "result": "not_found",
+                    "score": 1,
+                    "severity": "none"
+                }
+            },
+            {
+                "data_set": "legal_background",
+                "severity": "none",
+                "score": 1,
+                "result": "not_found",
+                "by_id": {
+                    "result": "not_found",
+                    "score": 1,
+                    "severity": "none"
+                },
+                "by_name": {
+                    "result": "not_found",
+                    "score": 1,
+                    "severity": "none"
+                }
+            },
+            {
+                "data_set": "international_background",
+                "severity": "none",
+                "score": 1,
+                "result": "not_found",
+                "by_id": {
+                    "result": "not_found",
+                    "score": 1,
+                    "severity": "none"
+                },
+                "by_name": {
+                    "result": "not_found",
+                    "score": 1,
+                    "severity": "none"
+                }
+            },
+            {
+                "data_set": "affiliations_and_insurances",
+                "severity": "none",
+                "score": 1,
+                "result": "found",
+                "by_id": {
+                    "result": "found",
+                    "score": 1,
+                    "severity": "none"
+                },
+                "by_name": {
+                    "result": "ignored",
+                    "score": 1,
+                    "severity": "unknown"
+                }
+            },
+            {
+                "data_set": "alert_in_media",
+                "severity": "none",
+                "score": 1,
+                "result": "not_found",
+                "by_id": {
+                    "result": "ignored",
+                    "score": 1,
+                    "severity": "unknown"
+                },
+                "by_name": {
+                    "result": "not_found",
+                    "score": 1,
+                    "severity": "none"
+                }
+            }
+        ],
+        "status": "completed",
+        "statuses": [
+            {
+                "database_id": "DBI141d28369db4b63a55b3fc650538e0b18ac68251",
+                "database_name": "Superintendencia Nacional de Migraciones de Perú - Consulta de PTP",
+                "status": "skipped",
+                "invalid_inputs": [
+                    "ptp",
+                    "date_of_birth"
+                ]
+            },
+            {
+                "database_id": "DBI186cc7f84dd854ec4752998e456bffde20171a7d",
+                "database_name": "Seguro Integral de Salud",
+                "data_set": "personal_identity",
+                "status": "completed"
+            },
+            {
+                "database_id": "DBI186cc7f84dd854ec4752998e456bffde20171a7d",
+                "database_name": "Seguro Integral de Salud",
+                "data_set": "affiliations_and_insurances",
+                "status": "completed"
+            },
+            {
+                "database_id": "DBI1aaaab5c6a5148bdb04382b36dd01b1d49326b9c",
+                "database_name": "Oficina de Normalización Previsional",
+                "data_set": "affiliations_and_insurances",
+                "status": "completed"
+            },
+            {
+                "database_id": "DBI432eaaa6e0e60e148f9a36f3c94b8e77d77c6c68",
+                "database_name": "Ministerio de Justicia de Perú - Registros de Corrupción",
+                "data_set": "criminal_record",
+                "status": "completed"
+            },
+            {
+                "database_id": "DBI46386e0775cb816a08cb2676d116f64116439034",
+                "database_name": "Poder Judicial del Perú - Causas Civiles",
+                "data_set": "legal_background",
+                "status": "completed"
+            },
+            {
+                "database_id": "DBI4f3270aaa6bd8c6c80ec775555c54b9a6e53d900",
+                "database_name": "Poder Judicial del Perú - Derecho constitucional y social",
+                "data_set": "legal_background",
+                "status": "completed"
+            },
+            {
+                "database_id": "DBI51d54ea37d0e25573ce5e5973a1bcd30918f8aed",
+                "database_name": "Registro de Deudores Judiciales Morosos",
+                "data_set": "legal_background",
+                "status": "completed"
+            },
+            {
+                "database_id": "DBI67aa436e357c9e6ec714918d3d6e72be28a9afc3",
+                "database_name": "Modulo de Verificacion de Certificados",
+                "status": "skipped",
+                "invalid_inputs": [
+                    "verification_code"
+                ]
+            },
+            {
+                "database_id": "DBI89e83c0c396ad3b7d96187cba664e287a07a5287",
+                "database_name": "Ministerio de Justicia de Peru - Registros de otros Delitos",
+                "data_set": "criminal_record",
+                "status": "completed"
+            },
+            {
+                "database_id": "DBI93e1d69432367fc39e3a67e0706daeaaff629be2",
+                "database_name": "Registro de Deudores Alimentarios Morosos",
+                "data_set": "legal_background",
+                "status": "completed"
+            },
+            {
+                "database_id": "DBI9a75d312880d066bca562382a6af2a3c8463a3a3",
+                "database_name": "Superintendencia Nacional de Migraciones de Perú - Consulta de CE",
+                "status": "skipped",
+                "invalid_inputs": [
+                    "foreign_id",
+                    "date_of_birth"
+                ]
+            },
+            {
+                "database_id": "DBIa5317451b9ac898c0397313d0ad799c423be51ba",
+                "database_name": "Jurado Nacional de Elecciones del Perú",
+                "data_set": "personal_identity",
+                "status": "completed"
+            },
+            {
+                "database_id": "DBIcb2a10864f7d29ca3328ed9c251349027b978fb8",
+                "database_name": "Poder Judicial del Perú - Causas Penales",
+                "data_set": "criminal_record",
+                "status": "completed"
+            },
+            {
+                "database_id": "DBIdfe9134f75e8d6617eb118b3c8761c0be3ac461a",
+                "database_name": "Ministerio de Justicia de Peru - Registros Delitos de Terrorismo",
+                "data_set": "criminal_record",
+                "status": "completed"
+            },
+            {
+                "database_id": "DBIe07973b0dd450bf58834a285195b23b53f3b576d",
+                "database_name": "Superintendencia Nacional de Salud",
+                "data_set": "personal_identity",
+                "status": "completed"
+            },
+            {
+                "database_id": "DBIe07973b0dd450bf58834a285195b23b53f3b576d",
+                "database_name": "Superintendencia Nacional de Salud",
+                "data_set": "affiliations_and_insurances",
+                "status": "completed"
+            },
+            {
+                "database_id": "DBIe0ccf13319da18bc0d854f46aa5434a1724d4fa6",
+                "database_name": "Fugitivos Más Buscados de Perú",
+                "data_set": "criminal_record",
+                "status": "completed"
+            },
+            {
+                "database_id": "DBI021bf85b4b88628dfe6c9f155e2f53c27c6e491a",
+                "database_name": "Inter-American Development Bank",
+                "data_set": "international_background",
+                "status": "completed"
+            },
+            {
+                "database_id": "DBI16189d09c9ea160e0b46f9b02b5aa13b3acdb77e",
+                "database_name": "Consolidated Screening Lists",
+                "data_set": "international_background",
+                "status": "completed"
+            },
+            {
+                "database_id": "DBI20279be53a2cc5eb78c4eca234622c7764855804",
+                "database_name": "Google",
+                "data_set": "alert_in_media",
+                "status": "completed"
+            },
+            {
+                "database_id": "DBI2b69e4bd677e0c028939a2f3c1292c1cf2c31313",
+                "database_name": "Búsqueda en medios GOOGLE RSS",
+                "data_set": "alert_in_media",
+                "status": "completed"
+            },
+            {
+                "database_id": "DBI2ba70e37e29aacc38fc9a89cb6c39c29e8a5cfdd",
+                "database_name": "United Nations Security Council Consolidate List",
+                "data_set": "international_background",
+                "status": "completed"
+            },
+            {
+                "database_id": "DBI2f2a11461aa6d18384f754e26c2ff6c54fa10923",
+                "database_name": "Most Wanted Secret Service",
+                "data_set": "international_background",
+                "status": "completed"
+            },
+            {
+                "database_id": "DBI36a911fb239aa807ab845534ce42570a99b55a0a",
+                "database_name": "Offshore Leaks Database - Officers",
+                "data_set": "international_background",
+                "status": "completed"
+            },
+            {
+                "database_id": "DBI4430985bb6620056a6064cf11bb31186d34d582d",
+                "database_name": "Most Wanted Fugitives by the DEA",
+                "data_set": "international_background",
+                "status": "completed"
+            },
+            {
+                "database_id": "DBI59c070f10432398200898abda9e4657273c10748",
+                "database_name": "Offshore Leaks Database - Offshore entities",
+                "data_set": "international_background",
+                "status": "completed"
+            },
+            {
+                "database_id": "DBI5a155dfdb55d96a9ea00797ab5cf3fd88eac5910",
+                "database_name": "Office of Foreign Assets Control - OFAC",
+                "data_set": "international_background",
+                "status": "completed"
+            },
+            {
+                "database_id": "DBI779bcf960d4743fa23bc4c99a43f4f2a1e34ee92",
+                "database_name": "health-exclusions",
+                "data_set": "international_background",
+                "status": "completed"
+            },
+            {
+                "database_id": "DBI82f0ff06d2c7ae86e16160e637ba072f2fa70203",
+                "database_name": "U.S. Security and Exchange Commission (SEC)",
+                "data_set": "international_background",
+                "status": "completed"
+            },
+            {
+                "database_id": "DBIac4d74895385c27eccc0e589c2cf542a01ed6eea",
+                "database_name": "FBI",
+                "data_set": "international_background",
+                "status": "completed"
+            },
+            {
+                "database_id": "DBIb6f45cf65d3dfd2c37e6210ebbd9191d35dc48e2",
+                "database_name": "World Bank Debarred Firms",
+                "data_set": "international_background",
+                "status": "completed"
+            },
+            {
+                "database_id": "DBIb7da46375d124bbfecdddfb3774215fda2086aff",
+                "database_name": "Cia World Leaders",
+                "data_set": "international_background",
+                "status": "completed"
+            },
+            {
+                "database_id": "DBIb8f99bb1902b110b5a952e202b408190ab6a9e1a",
+                "database_name": "OFSI Consolidated List Search (HMT Treasury List)",
+                "data_set": "international_background",
+                "status": "completed"
+            },
+            {
+                "database_id": "DBIc75c46e22d5565371d2893fad550474abc891fc7",
+                "database_name": "Reported in the EU financial system",
+                "data_set": "international_background",
+                "status": "completed"
+            },
+            {
+                "database_id": "DBIca0e39584d803f7b935e481328a559efeb315532",
+                "database_name": "EU list of the most wanted",
+                "data_set": "international_background",
+                "status": "completed"
+            },
+            {
+                "database_id": "DBId73cdff5dd3cf75bb48fbfe773682f2983400180",
+                "database_name": "Common Position Terrorist EU",
+                "data_set": "international_background",
+                "status": "completed"
+            },
+            {
+                "database_id": "DBIda71937421a651f8564d16e18b21bb3955278271",
+                "database_name": "DSS Most Wanted - Bureau of Diplomatic Security",
+                "data_set": "international_background",
+                "status": "completed"
+            },
+            {
+                "database_id": "DBIdf35eee10ea75c3f52ad489090fe5d0133bb2689",
+                "database_name": "Offshore Leaks Database - Intermediares",
+                "data_set": "international_background",
+                "status": "completed"
+            },
+            {
+                "database_id": "DBIe72ce9fcb6bd79b6c9a2685cb66e72f387e78e40",
+                "database_name": "Interpol list of the most wanted",
+                "data_set": "international_background",
+                "status": "completed"
+            },
+            {
+                "database_id": "DBIe9d3417ee6daaff7332c899a9263ad634dd7d178",
+                "database_name": "Lista de terroristas de USA",
+                "data_set": "international_background",
+                "status": "completed"
+            }
+        ],
+        "summary": {
+            "identity_status": "found",
+            "names_found": [
+                {
+                    "first_name": "BRANDON WILL",
+                    "last_name": "CANDIA BOCANGEL",
+                    "count": 2
+                }
+            ],
+            "result": "found"
+        },
+        "update_date": "2023-05-22T22:44:21Z",
+        "vehicle_summary": {
+            "result": "skipped",
+            "vehicle_status": "not_found"
+        },
+        "national_id": "74909799",
+        "type": "person"
+    },
+    "details": "/v1/checks/CHKe9589d8706edf3cd0e2195b745d512f2/details",
+    "self": "/v1/checks/CHKe9589d8706edf3cd0e2195b745d512f2"
+}
