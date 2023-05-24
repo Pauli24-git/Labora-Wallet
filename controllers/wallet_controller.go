@@ -1,7 +1,9 @@
 package controllers
 
 import (
+	"Labora-Wallet/db"
 	"Labora-Wallet/models"
+	"Labora-Wallet/services"
 	"encoding/json"
 	"net/http"
 )
@@ -17,9 +19,10 @@ func CreateWallet(response http.ResponseWriter, request *http.Request) {
 		return
 	}
 
-	//{
-	// dni: 38424291
-	// countryId: AR
-	// date: 23-05-23
-	//}
+	database, err := db.GetDatabase()
+	dbHandlerpost := &db.PostgresDBHandler{Db: database}
+	walletService := &services.WalletService{DbHandler: dbHandlerpost}
+
+	err = walletService.ProcessWalletRequest(wallet)
+
 }
