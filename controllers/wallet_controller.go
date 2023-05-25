@@ -20,8 +20,10 @@ func CreateWallet(response http.ResponseWriter, request *http.Request) {
 	}
 
 	database, err := db.GetDatabase()
+
 	dbHandlerpost := &db.PostgresDBHandler{Db: database}
-	walletService := &services.WalletService{DbHandler: dbHandlerpost}
+
+	walletService := services.WalletService{DbHandler: dbHandlerpost}
 
 	err = walletService.ProcessWalletRequest(wallet)
 
