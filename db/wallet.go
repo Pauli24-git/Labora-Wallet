@@ -32,12 +32,16 @@ func (p *PostgresDBHandler) UpdateWallet(id int) (models.Wallet, error) {
 }
 
 func (p *PostgresDBHandler) DeleteWallet(id int) error {
-	err := p.Db.QueryRow("DELETE FROM wallet WHERE id = $1", id)
-
+	res, err := p.Db.Exec("DELETE FROM wallet WHERE id = $1", id)
 	if err != nil {
-		return nil
+		return err
 	}
-	return nil
+
+	_, err = res.RowsAffected()
+	if err != nil {
+		return err
+	}
+	return err
 }
 
 func (p *PostgresDBHandler) WalletStatus(id int) (*int, error) {
