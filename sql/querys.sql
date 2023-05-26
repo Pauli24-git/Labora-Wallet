@@ -21,3 +21,9 @@ CREATE TABLE logs (
 	petition_date date NOT NULL,
 	status integer NOT NULL
 );
+
+ALTER TABLE logs
+ADD COLUMN wallet_id integer
+
+ALTER TABLE wallet
+ADD COLUMN balance integer

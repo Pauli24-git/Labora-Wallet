@@ -16,7 +16,7 @@ func (p *PostgresDBHandler) CreateWallet(w models.Wallet) (*int, error) {
 	var id int
 	createDate := time.Now()
 	dateString := createDate.Format("2006-01-02")
-	err := p.Db.QueryRow("INSERT INTO Wallet(dni, countryId, Date) values ($1, $2, $3) RETURNING id", w.DNI, w.CountryId, dateString).Scan(&id)
+	err := p.Db.QueryRow("INSERT INTO Wallet(dni, countryId, created) values ($1, $2, $3) RETURNING id", w.DNI, w.CountryId, dateString).Scan(&id)
 
 	if err != nil {
 		return &id, err
@@ -32,11 +32,19 @@ func (p *PostgresDBHandler) UpdateWallet(id int) (models.Wallet, error) {
 }
 
 func (p *PostgresDBHandler) DeleteWallet(id int) error {
-	// Implementar la lógica para eliminar la wallet
+	err := p.Db.QueryRow("DELETE FROM wallet WHERE id = $1", id)
+
+	if err != nil {
+		return nil
+	}
 	return nil
 }
 
-func (p *PostgresDBHandler) WalletStatus(id int) error {
-	// Implementar la lógica para chequear el estado de la wallet
-	return nil
+func (p *PostgresDBHandler) WalletStatus(id int) (*int, error) {
+	err := p.Db.QueryRow("SELECT FROM wallet WHERE id = $1 RETURNING id", id).Scan(&id)
+	if err != nil {
+		return &id, err
+	}
+	return &id, nil
+
 }
