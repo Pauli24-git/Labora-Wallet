@@ -1,19 +1,24 @@
 package services
 
 import (
-	"Labora-Wallet/db"
 	"Labora-Wallet/models"
+	"errors"
 )
 
 type WalletService struct {
-	DbHandler models.DBHandler
+	WalletDbHandler models.WalletDBHandler
 
 	Api API
 
-	Logs db.Logs
+	Logs models.LogsDBHandler
 }
 
+const noDni = 0
+const noScore = 0
+const noId = 0
+
 func (w *WalletService) ProcessWalletRequest(s models.Wallet) error {
+	err := w.Api.initConfig()
 	checkID, err := w.Api.ObtainCheckID(s.DNI, s.CountryId)
 	if err != nil {
 		return err
@@ -23,28 +28,29 @@ func (w *WalletService) ProcessWalletRequest(s models.Wallet) error {
 	if err != nil {
 		return err
 	}
-	var id *int
+	var id int
 
 	if score == 1 {
-		id, err = w.DbHandler.CreateWallet(s)
+		id, err = w.WalletDbHandler.CreateWallet(s)
 		if err != nil {
 			return err
 		}
+		if id == 0 {
+			return errors.New("id is 0 after CreateWallet")
+		}
 	}
 
-	err = w.Logs.CreateLog(s.DNI, score, *id)
+	err = w.Logs.CreateLog(s.DNI, score, id)
 
 	return err
 }
 
 func (w *WalletService) ProcessWalletDelete(id int) error {
-	err := w.DbHandler.DeleteWallet(id)
-	if err != nil {
+	if err := w.WalletDbHandler.DeleteWallet(id); err != nil {
 		return err
 	}
 
-	err = w.Logs.CreateLog(0, 0, 0)
-	if err != nil {
+	if err := w.Logs.CreateLog(noDni, noScore, noId); err != nil {
 		return err
 	}
 

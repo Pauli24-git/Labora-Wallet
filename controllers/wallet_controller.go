@@ -24,15 +24,15 @@ func CreateWallet(response http.ResponseWriter, request *http.Request) {
 
 	dbHandlerpost := &db.PostgresDBHandler{Db: database}
 	api := services.API{}
-	logs := db.Logs{Db: database}
-	walletService := services.WalletService{DbHandler: dbHandlerpost, Api: api, Logs: logs}
+	logs := &db.Logs{Db: database}
+	walletService := services.WalletService{WalletDbHandler: dbHandlerpost, Api: api, Logs: logs}
 
 	err = walletService.ProcessWalletRequest(wallet)
 	if err != nil {
 		json.NewEncoder(response).Encode("Hubo un error en el procesamiento de la Wallet:" + err.Error())
 	}
 
-	//escrbirle a pepe que esta todo bien
+	json.NewEncoder(response).Encode("Se creo con exito.")
 }
 
 func UpdateWallet(response http.ResponseWriter, request *http.Request) {
@@ -48,7 +48,7 @@ func DeleteWallet(response http.ResponseWriter, request *http.Request) {
 	dbHandlerpost := &db.PostgresDBHandler{Db: database}
 	api := services.API{}
 	logs := db.Logs{Db: database}
-	walletService := services.WalletService{DbHandler: dbHandlerpost, Api: api, Logs: logs}
+	walletService := services.WalletService{WalletDbHandler: dbHandlerpost, Api: api, Logs: &logs}
 
 	err = walletService.ProcessWalletDelete(idBuscadoConvertido)
 
