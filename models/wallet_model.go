@@ -46,7 +46,7 @@ func LoadEnvVariablesTruora() (TruoraConfig, error) {
 	}
 	return TruoraConfig{
 		TruoraApiKey: os.Getenv("truora_api_key"),
-		Urlbase:      os.Getenv("urlbase"),
+		Urlbase:      os.Getenv("urlbasetruora"),
 	}, nil
 }
 

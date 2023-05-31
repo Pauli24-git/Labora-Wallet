@@ -22,17 +22,17 @@ func CreateWallet(response http.ResponseWriter, request *http.Request) {
 
 	database, err := db.GetDatabase()
 
-	dbHandlerpost := &db.WalletDBHandler{Db: database}
+	dbHandlerPost := &db.WalletDBHandler{Db: database}
 	api := services.API{}
 	logs := &db.Logs{Db: database}
-	walletService := services.WalletService{WalletDbHandler: dbHandlerpost, Api: api, Logs: logs}
+	walletService := services.WalletService{WalletDbHandler: dbHandlerPost, Api: api, Logs: logs}
 
 	err = walletService.ProcessWalletRequest(wallet)
 	if err != nil {
 		json.NewEncoder(response).Encode("Hubo un error en el procesamiento de la Wallet:" + err.Error())
+	} else {
+		json.NewEncoder(response).Encode("Se creo con exito.")
 	}
-
-	json.NewEncoder(response).Encode("Se creo con exito.")
 }
 
 func UpdateWallet(response http.ResponseWriter, request *http.Request) {

@@ -1,6 +1,7 @@
 package models
 
 type WalletDBHandler interface {
+	WalletExists(DNI int) (bool, error)
 	CreateWallet(w Wallet) (int, error)
 	UpdateWallet(id int) (Wallet, error)
 	DeleteWallet(id int) error

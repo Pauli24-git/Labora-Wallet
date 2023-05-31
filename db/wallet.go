@@ -11,6 +11,14 @@ type WalletDBHandler struct {
 	Db *sql.DB
 }
 
+func (p *WalletDBHandler) WalletExists(id int) (bool, error) {
+	err := p.Db.QueryRow("SELECT FROM wallet WHERE id = $1 RETURNING id", id).Scan(&id)
+	if err != nil {
+		return false, err
+	}
+	return true, err
+}
+
 func (p *WalletDBHandler) CreateWallet(w models.Wallet) (int, error) {
 
 	var id int
@@ -49,5 +57,4 @@ func (p *WalletDBHandler) WalletStatus(id int) (int, error) {
 		return id, err
 	}
 	return id, nil
-
 }

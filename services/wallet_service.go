@@ -30,16 +30,20 @@ func (w *WalletService) ProcessWalletRequest(s models.Wallet) error {
 	}
 	var id int
 
-	if score == 1 {
-		id, err = w.WalletDbHandler.CreateWallet(s)
-		if err != nil {
-			return err
+	res, err := w.WalletDbHandler.WalletExists(s.DNI)
+	if res {
+		if score == 1 {
+			id, err = w.WalletDbHandler.CreateWallet(s)
+			if err != nil {
+				return err
+			}
+			if id == 0 {
+				return errors.New("id es 0 despues de CreateWallet")
+			}
 		}
-		if id == 0 {
-			return errors.New("id is 0 after CreateWallet")
-		}
+	} else {
+		return errors.New("El DNI ingresado ya esta asociado a una Wallet. ")
 	}
-
 	err = w.Logs.CreateLog(s.DNI, score, id)
 
 	return err
