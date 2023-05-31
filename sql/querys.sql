@@ -27,3 +27,12 @@ ADD COLUMN wallet_id integer
 
 ALTER TABLE wallet
 ADD COLUMN balance integer
+
+CREATE TABLE transactions (
+  "id" SERIAL PRIMARY KEY,
+  "senderID" integer,
+  "receiverID" integer,
+  "type" varchar,
+  "amount" integer,
+  "created" timestamp DEFAULT (now())
+);

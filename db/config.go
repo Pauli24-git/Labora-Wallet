@@ -17,8 +17,11 @@ func GetDatabase() (*sql.DB, error) {
 		log.Fatalf("Error loading .env file")
 	}
 
-	psqlInfo := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable",
-		DbConfig.Host, DbConfig.Port, DbConfig.User, DbConfig.Password, DbConfig.DbName)
+	// psqlInfo := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable",
+	// 	DbConfig.Host, DbConfig.Port, DbConfig.User, DbConfig.Password, DbConfig.DbName)
+
+	psqlInfo := fmt.Sprintf("postgres://%s:%s@%s:%s/%s?sslmode=disable",
+		DbConfig.User, DbConfig.Password, DbConfig.Host, DbConfig.Port, DbConfig.DbName)
 
 	connection, err := sql.Open("postgres", psqlInfo)
 	if err != nil {

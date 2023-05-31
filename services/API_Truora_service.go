@@ -12,8 +12,8 @@ import (
 )
 
 type API struct {
-	apiKey  string
-	urlBase string
+	apiKey        string
+	urlBaseTruora string
 }
 
 func (api *API) initConfig() error {
@@ -25,7 +25,7 @@ func (api *API) initConfig() error {
 	}
 
 	api.apiKey = config.TruoraApiKey
-	api.urlBase = config.Urlbase
+	api.urlBaseTruora = config.Urlbase
 
 	return err
 }
@@ -41,7 +41,7 @@ func (api *API) ObtainCheckID(dni int, countryId string) (string, error) {
 	}.Encode()
 
 	client := &http.Client{}
-	req, err := http.NewRequest(method, api.urlBase, strings.NewReader(payload))
+	req, err := http.NewRequest(method, api.urlBaseTruora, strings.NewReader(payload))
 	if err != nil {
 		return "", err
 	}
@@ -74,7 +74,7 @@ func (api *API) ObtainScore(checkID string) (int, error) {
 
 	method := "GET"
 
-	newUrl := api.urlBase + checkID
+	newUrl := api.urlBaseTruora + checkID
 
 	client := &http.Client{}
 	req, err := http.NewRequest(method, newUrl, nil)
@@ -89,7 +89,7 @@ func (api *API) ObtainScore(checkID string) (int, error) {
 		res, err := client.Do(req)
 
 		if err != nil {
-			finish = true
+			break
 		}
 
 		var backgroundCheckJson models.BackgroundCheck
@@ -97,7 +97,7 @@ func (api *API) ObtainScore(checkID string) (int, error) {
 		err = json.NewDecoder(res.Body).Decode(&backgroundCheckJson)
 
 		if err != nil {
-			finish = true
+			break
 		}
 
 		if backgroundCheckJson.Check.Status == "completed" {

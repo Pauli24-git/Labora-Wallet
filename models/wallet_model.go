@@ -12,6 +12,7 @@ type Wallet struct {
 	CountryId string `json:"countryid"`
 	DNI       int    `json:"dni"`
 	Date      string `json:"date"`
+	Balance   int    `json:"balance"`
 }
 
 type DbConfig struct {
@@ -52,4 +53,24 @@ func LoadEnvVariablesTruora() (TruoraConfig, error) {
 type TruoraConfig struct {
 	TruoraApiKey string
 	Urlbase      string
+}
+
+type Transactions struct {
+	SenderId   int    `json:"senderid"`
+	ReceiverId int    `json:"receiverid"`
+	Amount     int    `json:"amount"`
+	Operation  string `json:"operation"`
+	Date       string `json:"date"`
+}
+
+type Movements struct {
+	Operation string `json:"operation"`
+	Amount    int    `json:"amount"`
+	Time      string `json:"date"`
+}
+
+type TransactionInfo struct {
+	ID        int         `json:"id"`
+	Balance   int         `json:"balance"`
+	Movements []Movements `json:"movements"`
 }

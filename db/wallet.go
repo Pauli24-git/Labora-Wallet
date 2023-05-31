@@ -7,11 +7,11 @@ import (
 	"Labora-Wallet/models"
 )
 
-type PostgresDBHandler struct {
+type WalletDBHandler struct {
 	Db *sql.DB
 }
 
-func (p *PostgresDBHandler) CreateWallet(w models.Wallet) (int, error) {
+func (p *WalletDBHandler) CreateWallet(w models.Wallet) (int, error) {
 
 	var id int
 	createDate := time.Now()
@@ -24,13 +24,13 @@ func (p *PostgresDBHandler) CreateWallet(w models.Wallet) (int, error) {
 	return id, nil
 }
 
-func (p *PostgresDBHandler) UpdateWallet(id int) (models.Wallet, error) {
+func (p *WalletDBHandler) UpdateWallet(id int) (models.Wallet, error) {
 	// Implementar la lógica para actualizar la wallet
 
 	return models.Wallet{}, nil
 }
 
-func (p *PostgresDBHandler) DeleteWallet(id int) error {
+func (p *WalletDBHandler) DeleteWallet(id int) error {
 	res, err := p.Db.Exec("DELETE FROM wallet WHERE id = $1", id)
 	if err != nil {
 		return err
@@ -43,7 +43,7 @@ func (p *PostgresDBHandler) DeleteWallet(id int) error {
 	return err
 }
 
-func (p *PostgresDBHandler) WalletStatus(id int) (int, error) {
+func (p *WalletDBHandler) WalletStatus(id int) (int, error) {
 	err := p.Db.QueryRow("SELECT FROM wallet WHERE id = $1 RETURNING id", id).Scan(&id)
 	if err != nil {
 		return id, err
