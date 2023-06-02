@@ -32,6 +32,8 @@ func (w *WalletService) ProcessWalletRequest(s models.Wallet) error {
 
 	res, err := w.WalletDbHandler.WalletExists(s.DNI)
 	if res {
+		return errors.New("El DNI ingresado ya esta asociado a una Wallet. ")
+	} else {
 		if score == 1 {
 			id, err = w.WalletDbHandler.CreateWallet(s)
 			if err != nil {
@@ -41,11 +43,9 @@ func (w *WalletService) ProcessWalletRequest(s models.Wallet) error {
 				return errors.New("id es 0 despues de CreateWallet")
 			}
 		}
-	} else {
-		return errors.New("El DNI ingresado ya esta asociado a una Wallet. ")
 	}
-	err = w.Logs.CreateLog(s.DNI, score, id)
 
+	err = w.Logs.CreateLog(s.DNI, score, id)
 	return err
 }
 

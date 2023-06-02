@@ -11,8 +11,8 @@ type WalletDBHandler struct {
 	Db *sql.DB
 }
 
-func (p *WalletDBHandler) WalletExists(id int) (bool, error) {
-	err := p.Db.QueryRow("SELECT FROM wallet WHERE id = $1 RETURNING id", id).Scan(&id)
+func (p *WalletDBHandler) WalletExists(dni int) (bool, error) {
+	err := p.Db.QueryRow("SELECT dni FROM wallet WHERE dni = $1", dni).Scan(&dni)
 	if err != nil {
 		return false, err
 	}
