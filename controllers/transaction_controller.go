@@ -15,7 +15,7 @@ func CreateTransaction(response http.ResponseWriter, request *http.Request) {
 	err := json.NewDecoder(request.Body).Decode(&transactionData)
 
 	if err != nil {
-		json.NewEncoder(response).Encode("Hubo un error en la transaccion: " + err.Error())
+		http.Error(response, "Hubo un error en la transaccion.", http.StatusBadRequest)
 		return
 	}
 
@@ -27,12 +27,12 @@ func CreateTransaction(response http.ResponseWriter, request *http.Request) {
 
 	err = transactionService.CreateTransaction(transactionData)
 	if err != nil {
-		json.NewEncoder(response).Encode("No se pudo concretar la transaccion: " + err.Error())
+		http.Error(response, "No se pudo concretar la transaccion\nHubo un error en el procesamiento de la Wallet.", http.StatusBadRequest)
 		return
 	}
 
 	json.NewEncoder(response).Encode("Transacción exitosa.")
-	response.WriteHeader(http.StatusOK)
+	json.NewEncoder(response).Encode("Se creo con exito.")
 }
 
 func TransactionStatus(response http.ResponseWriter, request *http.Request) {
@@ -48,7 +48,7 @@ func TransactionStatus(response http.ResponseWriter, request *http.Request) {
 
 	res, err := transactionService.TransactionsStatusbyID(idConvertido)
 	if err != nil {
-		json.NewEncoder(response).Encode("Hubo un error en el procesamiento de el Status:" + err.Error())
+		http.Error(response, "Hubo un error en el procesamiento de el Status. ", http.StatusBadRequest)
 	}
 	json.NewEncoder(response).Encode(res)
 }

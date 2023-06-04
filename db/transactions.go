@@ -34,6 +34,7 @@ func (t *TransactionDBHandler) CheckIDBeforeTransaction(tr models.Transactions) 
 
 func (t *TransactionDBHandler) CheckFundsBeforeTransaction(c models.Transactions) error {
 	var balance int
+
 	err := t.Db.QueryRow("SELECT balance FROM wallet WHERE id = $1", c.SenderId).Scan(&balance)
 	if err != nil || balance < c.Amount {
 		return errors.New("La billetera no cuenta con fondos suficientes para realizar la transaccion. ")

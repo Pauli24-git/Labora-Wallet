@@ -16,7 +16,7 @@ func CreateWallet(response http.ResponseWriter, request *http.Request) {
 	err := json.NewDecoder(request.Body).Decode(&wallet)
 
 	if err != nil {
-		json.NewEncoder(response).Encode("Hubo un error en la creacion de la Wallet:" + err.Error())
+		http.Error(response, "Hubo un error en la creacion de la Wallet. ", http.StatusBadRequest)
 		return
 	}
 
@@ -29,7 +29,7 @@ func CreateWallet(response http.ResponseWriter, request *http.Request) {
 
 	err = walletService.ProcessWalletRequest(wallet)
 	if err != nil {
-		json.NewEncoder(response).Encode("Hubo un error en el procesamiento de la Wallet:" + err.Error())
+		http.Error(response, "Hubo un error en el procesamiento de la Wallet. ", http.StatusBadRequest)
 	} else {
 		json.NewEncoder(response).Encode("Se creo con exito.")
 	}
@@ -53,7 +53,7 @@ func DeleteWallet(response http.ResponseWriter, request *http.Request) {
 	err = walletService.ProcessWalletDelete(idBuscadoConvertido)
 
 	if err != nil {
-		json.NewEncoder(response).Encode("Hubo un error en la eliminación de la Wallet:" + err.Error())
+		http.Error(response, "Hubo un error en la eliminación de la Wallet. ", http.StatusBadRequest)
 	}
 }
 
